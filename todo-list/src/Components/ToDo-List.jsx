@@ -12,10 +12,17 @@ const ToDo= () => {
 
 
     const Listitems =()=> {
-        setlist((olditems)=> {
-           return [...olditems, work]
-        })
-        setwork("")
+        if (work==="") {
+            alert("Add A Items")
+        }
+
+        else {
+            setlist((olditems)=> {
+                return [...olditems, work]
+             })
+             setwork("")
+        }
+        
     }
 
 
