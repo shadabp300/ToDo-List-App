@@ -3,54 +3,80 @@ import { useState } from 'react'
 import "./ToDo.css"
 
 const ToDo= () => {
-    const [work, setwork]=useState("")
-    const [list, setlist]=useState([])
+ 
+    let [work, setwork]=useState("")
+    let [list, setlist]=useState([])
+    let [bool, setbool]=useState(false)
+    let [id, setid]=useState(0)
 
-    const onChange=(e)=> {
+    let onChange=(e)=> {
         setwork(e.target.value)
     }
 
-
-    const Listitems =()=> {
-        if (work==="") {
-            alert("Add A Items")
-        }
-
-        else {
-            setlist((olditems)=> {
-                return [...olditems, work]
-             })
-             setwork("")
-        }
-        
+    let add=()=> {
+        setlist((old)=> {
+           return [...old,work]
+        })
+        setwork("")
     }
 
-
-    const remove=(id)=> {
-        setlist((olditems)=> {
-            return olditems.filter((element,index)=> {
-                return index !==id
+    let remove=(index)=> {
+        setlist((old)=> {
+            return old.filter((val,i) => {
+                return i!==index
+                
             })
-         })
+        })
     }
 
+    let edit=(i, val)=> {
+        setid(i)
+        setbool(!bool)
+        setwork(val)
+    }
+
+    let save=(i)=> {
+        list[i]=work
+        setlist(list)
+        setbool(!bool)
+        setwork("")
+    }
 
   return (
     <div className='container'>
         <div className='todo'>
         <h1>ToDo List</h1>
         <div>
-        <input type="text" value={work} onChange={onChange}/>
-        <button type="" className='add' onClick={Listitems}>+</button>
+        <input type="" name="" value={work} onChange={onChange}/>
+        
+        
+        <button type="" className='add' onClick={add}>+</button>
         </div>
         <ol>
-            {list.map((val, index) => {
-                return <li><span className='delete' onClick={()=> 
-                    {remove(index)}}>⚔️</span><span>{val}</span></li>
-            })}
+        {
+            list.map((val,i)=> {
+                
+                return ( 
+                    <div className='list'>
+                    <li key={(i)}>
+                    {val} 
+                    </li>
+                    <span className='float'>
+
+                {(bool && id===i) ?
+                        <span className='edit' onClick={()=>save(i)}>✅</span>
+                :
+                    <span className='edit' onClick={()=>edit(i, val)}>🖍️</span>
+                }
+                    
+                    <span className='delete' onClick={()=>remove(i)}>❌</span>
+                    </span>
+                    </div>
+                    )
+            })
+        }
         </ol>
         </div>
-        
     </div>
   )
 }

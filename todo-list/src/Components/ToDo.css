@@ -35,7 +35,7 @@ input {
     border-bottom: 3px solid rgb(186, 134, 232);
     margin: 2vh 0 2vh 4vw;
     text-align: center;
-    font-size: larger;
+    font-size: 20px;
     outline: none;
 }
 
@@ -51,26 +51,56 @@ input {
 
 .add:hover {
     background-color: rgb(105, 231, 105);
+    cursor: pointer;
 }
 ol {
-    margin-left: 1vw;
+    margin:0 2vw;
+
     list-style: none;
 }
 li {
     margin-bottom: 1.5vh;
+    display: inline;
+    font-weight: bold;
+    font-size: 20px;
 }
 
 .delete {
     font-size: large;
     font-weight: bold;
-    margin-right:  2vw;
+    /* margin-right:  2vw; */
     padding: 5px;
     border-radius: 50px;
+    
 }
-.delete:hover{
-    background-color: rgb(243, 69, 104);
+.delete:hover {
+    cursor: pointer;
 }
 
+
+.edit {
+    font-size: large;
+    font-weight: bold;
+    /* margin-right:  1vw; */
+    padding: 5px;
+    border-radius: 50px;
+    
+    
+}
+
+.edit:hover {
+    background-color: black;
+    cursor: pointer;
+}
+
+.float {
+    float: right;
+}
+
+.list {
+    display: block;
+    margin-bottom: 3vh;
+}
 span {
     font-size: larger;
 }
