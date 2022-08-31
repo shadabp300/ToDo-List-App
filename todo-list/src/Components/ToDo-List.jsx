@@ -14,10 +14,15 @@ const ToDo= () => {
     }
 
     let add=()=> {
+       if (work==="") {
+        alert("Please add the Task")
+       }else {
         setlist((old)=> {
-           return [...old,work]
-        })
-        setwork("")
+            return [...old,work]
+         })
+         setwork("")
+       }
+        
     }
 
     let remove=(index)=> {
@@ -36,10 +41,16 @@ const ToDo= () => {
     }
 
     let save=(i)=> {
+        if (work==="") {
+            alert("Edit Correctly")
+        }
+        else {
         list[i]=work
         setlist(list)
         setbool(!bool)
         setwork("")
+        }
+        
     }
 
   return (
